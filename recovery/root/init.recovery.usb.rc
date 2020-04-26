@@ -3,8 +3,8 @@ on init
     chmod 0660 /sys/class/android_usb/android0/terminal_version
     chown system system /sys/class/android_usb/android0/usb30en
     chmod 0660 /sys/class/android_usb/android0/usb30en
-    chown system system /sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun0/file
-    chmod 0660 /sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun0/file
+    chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
 
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/f_rndis/manufacturer Samsung
@@ -14,9 +14,7 @@ on init
     write /sys/class/android_usb/android0/functions mtp,adb
 
     # set up the usb mass storage lun
-    write /sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun0/cdrom 0
-    write /sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun0/nofua 0
-    write /sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun0/ro 0
+    write /sys/class/android_usb/f_mass_storage/lun/nofua 1
 
 on boot
     setprop sys.usb.config none
