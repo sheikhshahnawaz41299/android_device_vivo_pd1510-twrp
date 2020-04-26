@@ -1,0 +1,19 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+# mount_point   fstype    device                                           flags
+/boot           emmc      /dev/block/bootdevice/by-name/boot               flags=display="Boot"
+/recovery       emmc      /dev/block/bootdevice/by-name/recovery           flags=display="Recovery";backup=1
+/system         ext4      /dev/block/bootdevice/by-name/system             flags=display="System";backup=1
+/system_image   emmc      /dev/block/bootdevice/by-name/system             flags=backup=1;flashimg
+/vendor         ext4      /dev/block/bootdevice/by-name/vendor             flags=display="Vendor";backup=1;wipeingui;fsflags=rw
+/vendor_image	emmc	  /dev/block/bootdevice/by-name/vendor		   flags=display="Treble-vendor";backup=1;fsflags=rw
+/data           ext4      /dev/block/bootdevice/by-name/userdata           flags=encryptable=footer
+/cache          ext4      /dev/block/bootdevice/by-name/cache              flags=display="Cache";backup=1;wipeingui
+/splash         emmc      /dev/block/bootdevice/by-name/splash             flags=display="Boot Logo";backup=1;flashimg=1
+
+# Partition on external removable devices
+/storage        ext4      /data/media/0                  		   flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+/sdcard1        auto      /dev/block/mmcblk1p1                             flags=display="MicroSD";storage;wipeingui;removable
+/usb-otg        auto      /dev/block/sda1                                  flags=display="USB Storage";storage;wipeingui;removable
+

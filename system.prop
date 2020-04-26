@@ -1,0 +1,7 @@
+ro.chipname=msm8916
+ro.arch=msm8916
+ro.lcd_min_brightness=10
+ro.lcd_brightness=162
+ro.sf.lcd_density=1080
+ro.hardware.keystore=msm8916
+persist.sys.usb.config=mtp,adb
