@@ -42,43 +42,30 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dt $(TARGET_PREBUILT_DTB)
 
 # Platform
-# It's not needed for booting TWRP, but it should be added
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := pd1510
 
-# Recovery
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_FLASH_BLOCK_SIZE := 0
-BOARD_HAS_NO_REAL_SDCARD := true
-BOARD_SUPPRESS_SECURE_ERASE := true
-BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_RECOVERY_SWIPE := true
-BOARD_USES_MMCUTILS := true
-BOARD_SUPPRESS_EMMC_WIPE := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-
-# Partitions
-#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 27090158 # This is the maximum known partition size, but it can be higher, so we just omit it
-
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 
-# TWRP specific build flags
+# Workaround for error copying vendor files to recovery ramdisk
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_VENDOR := vendor
+
+# TWRP Configuration
 TW_THEME := portrait_hdpi
-RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-#TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 162
-TW_NO_REBOOT_BOOTLOADER := false
-TW_HAS_DOWNLOAD_MODE := false
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_USE_TOOLBOX := true
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
