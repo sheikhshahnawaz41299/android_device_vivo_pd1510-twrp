@@ -17,6 +17,6 @@ To build:
  source build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
-mka recoveryimage -j8
+lunch omni_pd1510-eng && mka recoveryimage
 ```
 
