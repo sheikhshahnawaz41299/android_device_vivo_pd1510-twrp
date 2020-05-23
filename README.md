@@ -1,6 +1,6 @@
 ## TWRP device tree for Vivo Y51L (pd1510)
 
-## Experimental not recommended to use
+## Experimental not recommended to use, use twrp_8.1 branch instead
 
 Add to `.repo/local_manifests/pd1510.xml`:
 
