@@ -1,5 +1,13 @@
 ## TWRP device tree for Vivo Y51L (pd1510)
 
+## Link to the kernel source :-
+```xml
+https://github.com/sheikhshahnawaz41299/android_kernel_vivo_msm8916.git
+
+
+
+```
+
 Add to `.repo/local_manifests/pd1510.xml`:
 
 ```xml
