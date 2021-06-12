@@ -1,4 +1,4 @@
-# charger for Android 8.0 and up
+# charger for Android 1.4.0.0 and up
 
 service charger /charger -r
     critical
