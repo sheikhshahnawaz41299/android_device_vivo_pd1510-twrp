@@ -9,3 +9,4 @@
 /firmware        vfat              /dev/block/bootdevice/by-name/modem      flags=mounttodecrypt;fsflags=ro;display="Firmware"
 
 /external_sd     vfat              /dev/block/mmcblk1p1 /dev/block/mmcblk1  flags=removable;storage;wipeingui;display="Micro SDCard"
+/usb_otg         auto              /dev/block/sda1      /dev/block/sda      flags=storage;wipeingui;removable;display="USB-OTG"
