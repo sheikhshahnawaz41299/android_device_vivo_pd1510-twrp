@@ -29,4 +29,7 @@ service vm_bms /sbin/vm_bms
 
 on property:ro.twrp.boot=1
     write /proc/boot_completed_prop 1
-    setprop persist.sys.usb.config=mtp,adb	
+    setprop persist.sys.usb.config=mtp,adb
+
+    # OTG
+    write /sys/devices/soc.0/78d9000.usb/host_mode enabled		
