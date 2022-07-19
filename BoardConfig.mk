@@ -1,7 +1,8 @@
 #
 # Copyright (C) 2016 The Android Open Source Project
 # Copyright (C) 2016 The TWRP Open Source Project
-# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator 
+# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2022 sheikhshahnawaz41299 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,7 +52,7 @@ BOARD_MKBOOTIMG_ARGS += --dt $(TARGET_PREBUILT_DTB)
 # Platform
 # It's not needed for booting TWRP, but it should be added
 TARGET_BOARD_PLATFORM := msm8916
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno306 
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := pd1510
@@ -63,11 +64,17 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 11913903616
 
+# File systems
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Recovery
-BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/twrp.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -84,18 +91,15 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_MAX_BRIGHTNESS := 150
 TW_DEFAULT_BRIGHTNESS := 80
-TW_DEFAULT_LANGUAGE := en-US
 TW_USE_TOOLBOX := true
 TW_IGNORE_ABS_MT_TRACKING_ID := true
-
-# Strip some function to reduce size
 TW_EXCLUDE_NANO := true
-TW_NO_EXFAT := true
-TW_EXCLUDE_AAPT := true
-TW_EXCLUDE_TZDATA := true
-TW_EXCLUDE_SUPERSU := true
-TW_EXCLUDE_TWRPAPP := true
-TW_EXTRA_LANGUAGES := false
+TW_NO_EXFAT := false
+TW_EXCLUDE_AAPT := false
+TW_EXCLUDE_TZDATA := false
+TW_EXCLUDE_SUPERSU := false
+TW_EXCLUDE_TWRPAPP := false
+TW_EXTRA_LANGUAGES := true
 TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 
 # Encryption support
